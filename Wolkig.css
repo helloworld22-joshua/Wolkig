@@ -158,11 +158,11 @@ nav .login:hover {
     rotate: 45deg;
   }
 }
-@container nav (max-width: 500px) {
-  nav {
-    display: none !important;
-  }
-}
+/* @container nav (max-width: 500px) {
+    nav {
+        display: none !important;
+    }
+} */
 header {
   height: inherit;
 }
