@@ -26,8 +26,8 @@
 
 body {
   height: 100vh;
-  background: #f00;
-  /* #0152bc */
+  background: #0152bc;
+  /* Test for mobile */
   margin: 0;
   overflow-x: hidden;
 }
@@ -125,7 +125,7 @@ nav .login:hover {
     height: 60px;
     background: var(--pri-color);
     position: fixed;
-    bottom: -80vh;
+    bottom: -85vh;
     left: 50%;
     translate: -50%;
     overflow: hidden;
@@ -168,11 +168,11 @@ header {
 header .animated-wallpaper {
   width: 100%;
   height: 100%;
-  position: absolute;
   -o-object-fit: cover;
      object-fit: cover;
   -webkit-clip-path: inset(0 0 1px 0);
           clip-path: inset(0 0 1px 0);
+  z-index: 10;
 }
 header .title {
   position: absolute;

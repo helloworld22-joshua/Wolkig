@@ -32,7 +32,7 @@
 }
 
 body {
-    @include object(null, 100vh, #f00); /* #0152bc */
+    @include object(null, 100vh, #0152bc); /* Test for mobile */
     margin: 0;
     overflow-x: hidden;
 }
@@ -136,7 +136,7 @@ nav {
     nav .menu {
         @include object(60px, 60px, var(--pri-color));
         position: fixed;
-        bottom: -80vh;
+        bottom: -85vh;
         left: 50%;
         translate: -50%;
         overflow: hidden;
@@ -185,9 +185,9 @@ header {
 
     .animated-wallpaper {
         @include object(100%, 100%, null);
-        position: absolute;
         object-fit: cover;
         clip-path: inset(0 0 1px 0);   // Black line appearing below <video> bug
+        z-index: 10;
     }
 
     .title {
