@@ -106,7 +106,8 @@ nav .menu .button {
   font-size: 2rem;
   transition: rotate 1s;
   cursor: pointer;
-  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 nav .login {
   flex: 1;
@@ -137,8 +138,11 @@ nav .login:hover {
     border-radius: 50%;
     transition: width 1s, height 1s, border-radius 1s;
   }
-  nav .menu .links, nav .menu .button {
+  nav .menu .links { /* , .button */
     display: block;
+  }
+  nav .menu .button {
+    display: flex;
   }
   nav .menu .links {
     opacity: 0;
