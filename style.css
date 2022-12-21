@@ -106,6 +106,7 @@ nav .menu .button {
   font-size: 2rem;
   transition: rotate 1s;
   cursor: pointer;
+  text-align: center;
 }
 nav .login {
   flex: 1;
