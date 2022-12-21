@@ -162,6 +162,9 @@ nav .login:hover {
   }
 }
 header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: inherit;
   background-color: var(--pri-color);
 }
@@ -172,13 +175,9 @@ header .animated-wallpaper {
      object-fit: cover;
   -webkit-clip-path: inset(0 0 1px 0);
           clip-path: inset(0 0 1px 0);
-  z-index: 10;
 }
 header .title {
   position: absolute;
-  width: 100%;
-  top: 50%;
-  translate: 0 -50%;
   padding: 65px;
   text-align: center;
   text-shadow: 2px 2px 2px hsla(0deg, 0%, 0%, 0.25);

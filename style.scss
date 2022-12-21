@@ -180,6 +180,7 @@ nav {
 }
 
 header {
+    @include center;
     height: inherit;
     background-color: var(--pri-color);
 
@@ -187,15 +188,10 @@ header {
         @include object(100%, 100%, null);
         object-fit: cover;
         clip-path: inset(0 0 1px 0);   // Black line appearing below <video> bug
-        z-index: 10;
     }
 
     .title {
         position: absolute;
-        width: 100%;
-        top: 50%;
-        translate: 0 -50%;
-
         padding: 65px;
         text-align: center;
         text-shadow: 2px 2px 2px hsla(0, 0%, 0%, 0.25);
