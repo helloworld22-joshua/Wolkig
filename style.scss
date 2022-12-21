@@ -111,9 +111,6 @@ nav {
             font-size: 2rem;
             transition: rotate 1s;
             cursor: pointer;
-
-            justify-content: center;
-            align-items: center;
         }
     }
 
@@ -146,12 +143,8 @@ nav {
         border-radius: 50%;
         transition: width 1s, height 1s, border-radius 1s;
 
-        .links { /* , .button */
+        .links, .button {
             display: block;
-        }
-
-        .button {
-            display: flex;
         }
 
         .links {
