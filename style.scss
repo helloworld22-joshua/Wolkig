@@ -29,6 +29,7 @@
 
 *, *::before, *::after {
     box-sizing: border-box;
+    -webkit-tap-highlight-color: #0000;
 }
 
 html {background-color: #ff0}
