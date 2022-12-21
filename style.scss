@@ -32,7 +32,7 @@
 }
 
 body {
-    @include object(null, 100vh, #fff);
+    @include object(null, 100vh, #f00); /* #0152bc */
     margin: 0;
     overflow-x: hidden;
 }
@@ -185,8 +185,8 @@ header {
 
     .animated-wallpaper {
         @include object(100%, 100%, null);
-        object-fit: cover;
         position: absolute;
+        object-fit: cover;
         clip-path: inset(0 0 1px 0);   // Black line appearing below <video> bug
     }
 
