@@ -136,7 +136,7 @@ nav {
     nav .menu {
         @include object(60px, 60px, var(--pri-color));
         position: fixed;
-        bottom: -85vh;
+        bottom: -75vh;
         left: 50%;
         translate: -50%;
         overflow: hidden;
@@ -188,7 +188,6 @@ header {
         @include object(100%, 100%, null);
         object-fit: cover;
         clip-path: inset(0 0 1px 0);   // Black line appearing below <video> bug
-        z-index: 1;
     }
 
     .title {
