@@ -3,12 +3,19 @@
     --sec-color: hsl(210, 90%, 41%);
     --trd-color: hsl(0, 0%, 5%);
     --transition: .3s ease-in-out;
+    --border-radius: 2rem;
 }
 
 @mixin object($width, $height, $background) {
 	width: $width;
 	height: $height;
 	background: $background;
+}
+
+@mixin center {
+	display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 ::-webkit-scrollbar {
@@ -25,17 +32,9 @@
 }
 
 body {
-    @include object(null, 100vh, var(--sec-color));
+    @include object(null, 100vh, #0152bc);
     margin: 0;
     overflow-x: hidden;
-}
-
-p, a, input {
-    color: var(--trd-color);
-    font: {
-        family: Kantumruy Pro, sans-serif;
-        size: 1.2rem;
-    }
 }
 
 nav {
@@ -47,11 +46,17 @@ nav {
     z-index: 1;
     container: nav / inline-size;
 
+    a, input {
+        color: var(--pri-color);
+        font: {
+            family: Kantumruy Pro, sans-serif;
+            size: 1.2rem;
+        }
+    }
+
     .logo {
-        display: flex;
+        @include center;
         flex: 1;
-        justify-content: center;
-        align-items: center;
         text-decoration: none;
 
         img {
@@ -60,7 +65,6 @@ nav {
 
         h2 {
             margin-left: 12px;
-            color: var(--pri-color);
         }
     }
 
@@ -78,7 +82,6 @@ nav {
             }
             
             a {
-                color: var(--pri-color);
                 text-decoration: none;
                 text-transform: uppercase;
     
@@ -100,6 +103,7 @@ nav {
 
         .button {
             @include object(60px, 60px, none);
+            @include center;
             position: absolute;
             display: none;
             bottom: 0;
@@ -118,9 +122,8 @@ nav {
         flex: 1;
         padding: 12px;
         background: none;
-        color: var(--pri-color);
         border: var(--pri-color) 1px solid;
-        border-radius: 2rem;
+        border-radius: var(--border-radius);
         transition: background-color var(--transition);
 
         &:hover {
@@ -133,7 +136,6 @@ nav {
 @container nav (max-width: 700px) {
     nav .menu {
         @include object(60px, 60px, var(--pri-color));
-        box-sizing: content-box;
         position: fixed;
         bottom: -80vh;
         left: 50%;
@@ -141,7 +143,7 @@ nav {
         overflow: hidden;
         border: var(--sec-color) 2px solid;
         border-radius: 50%;
-        transition: width 1s, height 1s, border-radius 1s;
+        transition: all 1s;
 
         .links, .button {
             display: block;
@@ -159,7 +161,7 @@ nav {
 
         &[data-nav="true"] {
             @include object(200px, 300px, null);
-            border-radius: 2rem;
+            border-radius: var(--border-radius);
             
             .links {
                 opacity: 1;
@@ -172,29 +174,27 @@ nav {
     }
 }
 
-/* @container nav (max-width: 500px) {
-    nav {
-        display: none !important;
+@container nav (max-width: 500px) {     /* Temporary */
+    nav .logo h2 {
+        display: none;
     }
-} */
+}
 
 header {
+    @include center;
     height: inherit;
     background-color: var(--pri-color);
 
     .animated-wallpaper {
         @include object(100%, 100%, null);
+        position: absolute;
         object-fit: cover;
         clip-path: inset(0 0 1px 0);   // Black line appearing below <video> bug
     }
 
     .title {
-        position: absolute;
-        width: 100%;
-        margin: 0;
         padding: 65px;
-        inset: 50%;
-        translate: -50% -50%;
+        z-index: 1;
         text-align: center;
         text-shadow: 2px 2px 2px hsla(0, 0%, 0%, 0.25);
         color: var(--pri-color);

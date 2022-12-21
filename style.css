@@ -3,6 +3,7 @@
   --sec-color: hsl(210, 90%, 41%);
   --trd-color: hsl(0, 0%, 5%);
   --transition: .3s ease-in-out;
+  --border-radius: 2rem;
 }
 
 ::-webkit-scrollbar {
@@ -25,15 +26,9 @@
 
 body {
   height: 100vh;
-  background: var(--sec-color);
+  background: #0152bc;
   margin: 0;
   overflow-x: hidden;
-}
-
-p, a, input {
-  color: var(--trd-color);
-  font-family: Kantumruy Pro, sans-serif;
-  font-size: 1.2rem;
 }
 
 nav {
@@ -46,11 +41,16 @@ nav {
   z-index: 1;
   container: nav/inline-size;
 }
+nav a, nav input {
+  color: var(--pri-color);
+  font-family: Kantumruy Pro, sans-serif;
+  font-size: 1.2rem;
+}
 nav .logo {
   display: flex;
-  flex: 1;
   justify-content: center;
   align-items: center;
+  flex: 1;
   text-decoration: none;
 }
 nav .logo img {
@@ -58,7 +58,6 @@ nav .logo img {
 }
 nav .logo h2 {
   margin-left: 12px;
-  color: var(--pri-color);
 }
 nav .menu {
   flex: 4;
@@ -73,7 +72,6 @@ nav .menu .links li {
   padding: 12px;
 }
 nav .menu .links a {
-  color: var(--pri-color);
   text-decoration: none;
   text-transform: uppercase;
 }
@@ -95,6 +93,9 @@ nav .menu .button {
   width: 60px;
   height: 60px;
   background: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   display: none;
   bottom: 0;
@@ -111,9 +112,8 @@ nav .login {
   flex: 1;
   padding: 12px;
   background: none;
-  color: var(--pri-color);
   border: var(--pri-color) 1px solid;
-  border-radius: 2rem;
+  border-radius: var(--border-radius);
   transition: background-color var(--transition);
 }
 nav .login:hover {
@@ -126,7 +126,6 @@ nav .login:hover {
     width: 60px;
     height: 60px;
     background: var(--pri-color);
-    box-sizing: content-box;
     position: fixed;
     bottom: -80vh;
     left: 50%;
@@ -134,7 +133,7 @@ nav .login:hover {
     overflow: hidden;
     border: var(--sec-color) 2px solid;
     border-radius: 50%;
-    transition: width 1s, height 1s, border-radius 1s;
+    transition: all 1s;
   }
   nav .menu .links, nav .menu .button {
     display: block;
@@ -150,7 +149,7 @@ nav .login:hover {
   nav .menu[data-nav=true] {
     width: 200px;
     height: 300px;
-    border-radius: 2rem;
+    border-radius: var(--border-radius);
   }
   nav .menu[data-nav=true] .links {
     opacity: 1;
@@ -159,30 +158,30 @@ nav .login:hover {
     rotate: 45deg;
   }
 }
-/* @container nav (max-width: 500px) {
-    nav {
-        display: none !important;
-    }
-} */
+@container nav (max-width: 500px) { /* Temporary */
+  nav .logo h2 {
+    display: none;
+  }
+}
 header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: inherit;
   background-color: var(--pri-color);
 }
 header .animated-wallpaper {
   width: 100%;
   height: 100%;
+  position: absolute;
   -o-object-fit: cover;
      object-fit: cover;
   -webkit-clip-path: inset(0 0 1px 0);
           clip-path: inset(0 0 1px 0);
 }
 header .title {
-  position: absolute;
-  width: 100%;
-  margin: 0;
   padding: 65px;
-  inset: 50%;
-  translate: -50% -50%;
+  z-index: 1;
   text-align: center;
   text-shadow: 2px 2px 2px hsla(0deg, 0%, 0%, 0.25);
   color: var(--pri-color);
