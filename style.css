@@ -163,7 +163,7 @@ nav .login:hover {
 }
 header {
   height: inherit;
-  background-color: var(--pri-color);
+  background-color: #f00;
 }
 header .animated-wallpaper {
   width: 100%;

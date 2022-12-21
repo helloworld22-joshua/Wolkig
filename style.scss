@@ -181,7 +181,7 @@ nav {
 
 header {
     height: inherit;
-    background-color: var(--pri-color);
+    background-color: #f00;
 
     .animated-wallpaper {
         @include object(100%, 100%, null);
