@@ -24,9 +24,13 @@
   box-sizing: border-box;
 }
 
+html {
+  background-color: #ff0;
+}
+
 body {
   height: 100vh;
-  background: #0152bc;
+  background: #f00;
   margin: 0;
   overflow-x: hidden;
 }

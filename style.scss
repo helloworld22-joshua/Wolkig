@@ -31,8 +31,10 @@
     box-sizing: border-box;
 }
 
+html {background-color: #ff0}
+
 body {
-    @include object(null, 100vh, #0152bc); // Test for mobile
+    @include object(null, 100vh, #f00); // Test for mobile #0152bc
     margin: 0;
     overflow-x: hidden;
 }
