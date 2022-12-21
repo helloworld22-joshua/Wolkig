@@ -32,7 +32,7 @@
 }
 
 body {
-    @include object(null, 100vh, #0152bc); /* Test for mobile */
+    @include object(null, 100vh, #0152bc); // Test for mobile
     margin: 0;
     overflow-x: hidden;
 }
@@ -173,7 +173,7 @@ nav {
     }
 }
 
-@container nav (max-width: 500px) {     /* Temporary */
+@container nav (max-width: 500px) {     // Temporary
     nav .logo h2 {
         display: none;
     }
@@ -188,6 +188,7 @@ header {
         @include object(100%, 100%, null);
         object-fit: cover;
         clip-path: inset(0 0 1px 0);   // Black line appearing below <video> bug
+        z-index: 1;
     }
 
     .title {
