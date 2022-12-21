@@ -169,6 +169,7 @@ header .animated-wallpaper {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  position: absolute;
   -webkit-clip-path: inset(0 0 1px 0);
           clip-path: inset(0 0 1px 0);
 }

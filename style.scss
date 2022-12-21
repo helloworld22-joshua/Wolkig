@@ -186,6 +186,7 @@ header {
     .animated-wallpaper {
         @include object(100%, 100%, null);
         object-fit: cover;
+        position: absolute;
         clip-path: inset(0 0 1px 0);   // Black line appearing below <video> bug
     }
 
