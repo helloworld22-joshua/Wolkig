@@ -5,6 +5,12 @@
     --transition: .3s ease-in-out;
 }
 
+@mixin object($width, $height, $background) {
+	width: $width;
+	height: $height;
+	background: $background;
+}
+
 ::-webkit-scrollbar {
     width: 0;
 }
@@ -25,18 +31,17 @@ body {
 }
 
 p, a, input {
+    color: var(--trd-color);
     font: {
         family: Kantumruy Pro, sans-serif;
         size: 1.2rem;
     }
-    color: var(--trd-color);
 }
 
 nav {
-    position: absolute;
+    @include object(100%, 90px, null);
+    position: fixed;
     display: flex;
-    width: 100%;
-    height: 90px;
     padding: 0 65px;
     align-items: center;
     z-index: 1;
@@ -54,43 +59,58 @@ nav {
         }
 
         h2 {
-            margin: 0 0 0 12px;
+            margin-left: 12px;
             color: var(--pri-color);
         }
     }
 
-    .links {
-        display: flex;
+    .menu {
         flex: 4;
-        justify-content: center;
-        align-items: center;
-        padding: 0;
-        list-style-type: none;
 
-        li {
-            padding: 12px;
-        }
-        
-        a {
-            color: var(--pri-color);
-            text-decoration: none;
-            text-transform: uppercase;
-
-            &::after {
-                content: "";
-                position: relative;
-                display: block;
-                width: 2px;
-                height: 2px;
-                left: 50%;
-                background: var(--pri-color);
-                transition: var(--transition);
+        .links {
+            display: flex;
+            padding: 0;
+            justify-content: center;
+            list-style-type: none;
+    
+            li {
+                padding: 12px;
             }
             
-            &:hover::after {
-                width: 100%; 
-                left: 0;
+            a {
+                color: var(--pri-color);
+                text-decoration: none;
+                text-transform: uppercase;
+    
+                &::after {
+                    @include object(2px, 2px, var(--pri-color));
+                    content: "";
+                    position: relative;
+                    display: block;
+                    left: 50%;
+                    transition: var(--transition);
+                }
+                
+                &:hover::after {
+                    width: 100%; 
+                    left: 0;
+                }
             }
+        }
+
+        .button {
+            @include object(60px, 60px, none);
+            position: absolute;
+            display: none;
+            bottom: 0;
+            left: 50%;
+            translate: -50%;
+            border: none;
+            border-radius: 50%;
+            color: var(--sec-color);
+            font-size: 2rem;
+            transition: rotate 1s;
+            cursor: pointer;
         }
     }
 
@@ -111,7 +131,49 @@ nav {
 }
 
 @container nav (max-width: 700px) {
-    .links {
+    nav .menu {
+        @include object(60px, 60px, var(--pri-color));
+        box-sizing: content-box;
+        position: fixed;
+        bottom: -80vh;
+        left: 50%;
+        translate: -50%;
+        overflow: hidden;
+        border: var(--sec-color) 2px solid;
+        border-radius: 50%;
+        transition: width 1s, height 1s, border-radius 1s;
+
+        .links, .button {
+            display: block;
+        }
+
+        .links {
+            opacity: 0;
+            text-align: center;
+            transition: opacity .5s;
+            
+            a {
+                color: var(--sec-color);
+            }
+        }
+
+        &[data-nav="true"] {
+            @include object(200px, 300px, null);
+            border-radius: 2rem;
+            
+            .links {
+                opacity: 1;
+            }
+            
+            .button {
+                rotate: 45deg;
+            }
+        }
+    }
+}
+
+@container nav (max-width: 500px) {
+    nav {
         display: none !important;
     }
 }
@@ -120,8 +182,7 @@ header {
     height: inherit;
 
     .animated-wallpaper {
-        width: 100%;
-        height: 100%;
+        @include object(100%, 100%, null);
         object-fit: cover;
         clip-path: inset(0 0 1px 0);   // Black line appearing below <video> bug
     }
@@ -146,12 +207,9 @@ header {
 main {
     height: inherit;
 
-    section {
-        min-height: 100vh;
-    }
-
     #temp {
         position: relative;
+        min-height: 100vh;
         box-shadow: 0px -50px 50px #fff;
     }
 }

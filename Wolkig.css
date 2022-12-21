@@ -30,16 +30,16 @@ body {
 }
 
 p, a, input {
+  color: var(--trd-color);
   font-family: Kantumruy Pro, sans-serif;
   font-size: 1.2rem;
-  color: var(--trd-color);
 }
 
 nav {
-  position: absolute;
-  display: flex;
   width: 100%;
   height: 90px;
+  position: fixed;
+  display: flex;
   padding: 0 65px;
   align-items: center;
   z-index: 1;
@@ -56,38 +56,55 @@ nav .logo img {
   height: 3rem;
 }
 nav .logo h2 {
-  margin: 0 0 0 12px;
+  margin-left: 12px;
   color: var(--pri-color);
 }
-nav .links {
-  display: flex;
+nav .menu {
   flex: 4;
-  justify-content: center;
-  align-items: center;
+}
+nav .menu .links {
+  display: flex;
   padding: 0;
+  justify-content: center;
   list-style-type: none;
 }
-nav .links li {
+nav .menu .links li {
   padding: 12px;
 }
-nav .links a {
+nav .menu .links a {
   color: var(--pri-color);
   text-decoration: none;
   text-transform: uppercase;
 }
-nav .links a::after {
+nav .menu .links a::after {
+  width: 2px;
+  height: 2px;
+  background: var(--pri-color);
   content: "";
   position: relative;
   display: block;
-  width: 2px;
-  height: 2px;
   left: 50%;
-  background: var(--pri-color);
   transition: var(--transition);
 }
-nav .links a:hover::after {
+nav .menu .links a:hover::after {
   width: 100%;
   left: 0;
+}
+nav .menu .button {
+  width: 60px;
+  height: 60px;
+  background: none;
+  position: absolute;
+  display: none;
+  bottom: 0;
+  left: 50%;
+  translate: -50%;
+  border: none;
+  border-radius: 50%;
+  color: var(--sec-color);
+  font-size: 2rem;
+  transition: rotate 1s;
+  cursor: pointer;
 }
 nav .login {
   flex: 1;
@@ -104,7 +121,45 @@ nav .login:hover {
 }
 
 @container nav (max-width: 700px) {
-  .links {
+  nav .menu {
+    width: 60px;
+    height: 60px;
+    background: var(--pri-color);
+    box-sizing: content-box;
+    position: fixed;
+    bottom: -80vh;
+    left: 50%;
+    translate: -50%;
+    overflow: hidden;
+    border: var(--sec-color) 2px solid;
+    border-radius: 50%;
+    transition: width 1s, height 1s, border-radius 1s;
+  }
+  nav .menu .links, nav .menu .button {
+    display: block;
+  }
+  nav .menu .links {
+    opacity: 0;
+    text-align: center;
+    transition: opacity 0.5s;
+  }
+  nav .menu .links a {
+    color: var(--sec-color);
+  }
+  nav .menu[data-nav=true] {
+    width: 200px;
+    height: 300px;
+    border-radius: 2rem;
+  }
+  nav .menu[data-nav=true] .links {
+    opacity: 1;
+  }
+  nav .menu[data-nav=true] .button {
+    rotate: 45deg;
+  }
+}
+@container nav (max-width: 500px) {
+  nav {
     display: none !important;
   }
 }
@@ -136,10 +191,8 @@ header .title {
 main {
   height: inherit;
 }
-main section {
-  min-height: 100vh;
-}
 main #temp {
   position: relative;
+  min-height: 100vh;
   box-shadow: 0px -50px 50px #fff;
 }/*# sourceMappingURL=Wolkig.css.map */
