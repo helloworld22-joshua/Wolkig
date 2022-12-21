@@ -25,7 +25,7 @@
 }
 
 body {
-    height: 100vh;
+    @include object(null, 100vh, var(--sec-color));
     margin: 0;
     overflow-x: hidden;
 }
@@ -180,6 +180,7 @@ nav {
 
 header {
     height: inherit;
+    background-color: var(--pri-color);
 
     .animated-wallpaper {
         @include object(100%, 100%, null);
@@ -210,6 +211,7 @@ main {
     #temp {
         position: relative;
         min-height: 100vh;
+        background-color: var(--pri-color);
         box-shadow: 0px -50px 50px #fff;
     }
 }
