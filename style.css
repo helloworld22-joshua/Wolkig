@@ -40,6 +40,7 @@ nav {
   align-items: center;
   z-index: 1;
   container: nav/inline-size;
+  transition: top 1s;
 }
 nav a, nav input {
   color: var(--pri-color);

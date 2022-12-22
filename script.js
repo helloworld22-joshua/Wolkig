@@ -7,12 +7,12 @@ let nav = document.querySelector("nav").style;
 window.onscroll = () => {
     if (this.oldScroll > this.scrollY) {
         if (this.scrollY > 0) {
-            nav.backgroundColor = "f00";
+            nav.top = "0";
         } else {
             nav.backgroundColor = "#0f0";
         }
     } else {
-        nav.backgroundColor = "00f";
+        nav.top = "-100px";
     }
 
     this.oldScroll = this.scrollY;
