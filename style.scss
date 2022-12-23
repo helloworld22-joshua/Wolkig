@@ -46,7 +46,9 @@ nav {
     align-items: center;
     z-index: 1;
     container: nav / inline-size;
-    transition: top 1s;
+    // Test
+    transition: top 1s, background-color 1s;
+    top: 0;
 
     a, input {
         color: var(--pri-color);
@@ -145,7 +147,22 @@ nav {
         overflow: hidden;
         border: var(--sec-color) 2px solid;
         border-radius: 50%;
+        /* transition: width 1s, height 1s, border-radius 1s; */
+        // Test
         transition: all 1s;
+
+        &[data-nav="true"] {
+            @include object(200px, 300px, null);
+            border-radius: var(--border-radius);
+            
+            .links {
+                opacity: 1;
+            }
+            
+            .button {
+                rotate: 45deg;
+            }
+        }
 
         .links, .button {
             display: block;
@@ -158,19 +175,6 @@ nav {
             
             a {
                 color: var(--sec-color);
-            }
-        }
-
-        &[data-nav="true"] {
-            @include object(200px, 300px, null);
-            border-radius: var(--border-radius);
-            
-            .links {
-                opacity: 1;
-            }
-            
-            .button {
-                rotate: 45deg;
             }
         }
     }

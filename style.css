@@ -40,7 +40,8 @@ nav {
   align-items: center;
   z-index: 1;
   container: nav/inline-size;
-  transition: top 1s;
+  transition: top 1s, background-color 1s;
+  top: 0;
 }
 nav a, nav input {
   color: var(--pri-color);
@@ -132,18 +133,8 @@ nav .login:hover {
     overflow: hidden;
     border: var(--sec-color) 2px solid;
     border-radius: 50%;
+    /* transition: width 1s, height 1s, border-radius 1s; */
     transition: all 1s;
-  }
-  nav .menu .links, nav .menu .button {
-    display: block;
-  }
-  nav .menu .links {
-    opacity: 0;
-    text-align: center;
-    transition: opacity 0.5s;
-  }
-  nav .menu .links a {
-    color: var(--sec-color);
   }
   nav .menu[data-nav=true] {
     width: 200px;
@@ -155,6 +146,17 @@ nav .login:hover {
   }
   nav .menu[data-nav=true] .button {
     rotate: 45deg;
+  }
+  nav .menu .links, nav .menu .button {
+    display: block;
+  }
+  nav .menu .links {
+    opacity: 0;
+    text-align: center;
+    transition: opacity 0.5s;
+  }
+  nav .menu .links a {
+    color: var(--sec-color);
   }
 }
 @container nav (max-width: 400px) {

@@ -3,16 +3,20 @@ function toggleNav() {
 }
 
 let nav = document.querySelector("nav").style;
+let menu = document.querySelector("nav .menu").style;
 
 window.onscroll = () => {
     if (this.oldScroll > this.scrollY) {
-        if (this.scrollY > 0) {
+        if (this.scrollY > 0) {     // Scroll up
             nav.top = "0";
-        } else {
-            nav.backgroundColor = "#0f0";
+            menu.opacity = "1";
+            nav.backgroundColor = "var(--sec-color)";
+        } else {     // At top
+            nav.background = "none";
         }
-    } else {
+    } else {     // Scroll down
         nav.top = "-100px";
+        menu.opacity = "0";
     }
 
     this.oldScroll = this.scrollY;
