@@ -42,13 +42,12 @@ nav {
     @include object(100%, 90px, null);
     position: fixed;
     display: flex;
+    top: 0;
     padding: 0 65px;
     align-items: center;
     z-index: 1;
     container: nav / inline-size;
-    // Test
     transition: top 1s, background-color 1s;
-    top: 0;
 
     a, input {
         color: var(--pri-color);
@@ -74,6 +73,7 @@ nav {
 
     .menu {
         flex: 4;
+        transition: all 1s;
 
         .links {
             display: flex;
@@ -147,9 +147,6 @@ nav {
         overflow: hidden;
         border: var(--sec-color) 2px solid;
         border-radius: 50%;
-        /* transition: width 1s, height 1s, border-radius 1s; */
-        // Test
-        transition: all 1s;
 
         &[data-nav="true"] {
             @include object(200px, 300px, null);

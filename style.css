@@ -36,12 +36,12 @@ nav {
   height: 90px;
   position: fixed;
   display: flex;
+  top: 0;
   padding: 0 65px;
   align-items: center;
   z-index: 1;
   container: nav/inline-size;
   transition: top 1s, background-color 1s;
-  top: 0;
 }
 nav a, nav input {
   color: var(--pri-color);
@@ -63,6 +63,7 @@ nav .logo h2 {
 }
 nav .menu {
   flex: 4;
+  transition: all 1s;
 }
 nav .menu .links {
   display: flex;
@@ -133,8 +134,6 @@ nav .login:hover {
     overflow: hidden;
     border: var(--sec-color) 2px solid;
     border-radius: 50%;
-    /* transition: width 1s, height 1s, border-radius 1s; */
-    transition: all 1s;
   }
   nav .menu[data-nav=true] {
     width: 200px;
