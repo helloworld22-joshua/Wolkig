@@ -32,6 +32,10 @@
     -webkit-tap-highlight-color: #0000;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     height: 100vh;
     margin: 0;
