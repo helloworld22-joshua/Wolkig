@@ -1,5 +1,6 @@
 :root {
     --pri-color: hsl(0, 0%, 100%);
+    --pri2-color: hsl(0, 0%, 0%);
     --sec-color: hsl(210, 90%, 41%);
     --trd-color: hsl(0, 0%, 5%);
     --transition: .3s ease-in-out;
@@ -77,7 +78,7 @@ nav {
 
     .menu {
         flex: 4;
-        transition: all 1s;
+        transition: opacity 1s, bottom 1s, border-radius 1s, width 1s, height 1s;   // Fix this
 
         .links {
             display: flex;
@@ -139,6 +140,51 @@ nav {
             color: var(--sec-color);
         }
     }
+
+    &[data-scroll="top"] {
+        background: none;
+    }
+    
+    &[data-scroll="up"] {
+        top: 0;
+        background-color: hsla(0, 0%, 100%, 50%);
+        backdrop-filter: blur(10px);
+
+        .menu {
+            bottom: -75vh;
+            opacity: 1;
+        }
+
+        a, input {
+            color: var(--sec-color);
+        }
+
+        .menu .links a::after {
+            background-color: var(--sec-color);
+        }
+
+        .login {
+            border: var(--sec-color) 1px solid;
+
+            &:hover {
+                background-color: var(--sec-color);
+                color: var(--pri-color);
+            }
+        }
+    }
+    
+    &[data-scroll="down"] {
+        top: -90px;
+
+        .menu {
+            bottom: calc(-75vh - 90px);
+            opacity: 0;
+
+            &[data-menu="true"] {
+                opacity: 1;
+            }
+        }
+    }
 }
 
 @container nav (max-width: 650px) {
@@ -151,19 +197,6 @@ nav {
         overflow: hidden;
         border: var(--sec-color) 2px solid;
         border-radius: 50%;
-
-        &[data-nav="true"] {
-            @include object(200px, 300px, null);
-            border-radius: var(--border-radius);
-            
-            .links {
-                opacity: 1;
-            }
-            
-            .button {
-                rotate: 45deg;
-            }
-        }
 
         .links, .button {
             display: block;
@@ -178,11 +211,24 @@ nav {
                 color: var(--sec-color);
             }
         }
+
+        &[data-menu="true"] {
+            @include object(200px, 300px, null);
+            border-radius: var(--border-radius);
+            
+            .links {
+                opacity: 1;
+            }
+            
+            .button {
+                rotate: 45deg;
+            }
+        }
     }
 }
 
 @container nav (max-width: 400px) {     // Temporary
-    nav .logo h2 {
+    nav .logo img {
         display: none;
     }
 }
@@ -221,9 +267,4 @@ main {
         background-color: var(--pri-color);
         box-shadow: 0px -50px 50px #fff;
     }
-}
-
-footer {
-    background-image: linear-gradient(var(--pri-color), #0152bc);
-    height: 200px;
 }

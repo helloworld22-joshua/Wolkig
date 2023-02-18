@@ -1,5 +1,6 @@
 :root {
   --pri-color: hsl(0, 0%, 100%);
+  --pri2-color: hsl(0, 0%, 0%);
   --sec-color: hsl(210, 90%, 41%);
   --trd-color: hsl(0, 0%, 5%);
   --transition: .3s ease-in-out;
@@ -67,7 +68,7 @@ nav .logo h2 {
 }
 nav .menu {
   flex: 4;
-  transition: all 1s;
+  transition: opacity 1s, bottom 1s, border-radius 1s, width 1s, height 1s;
 }
 nav .menu .links {
   display: flex;
@@ -125,6 +126,42 @@ nav .login:hover {
   background-color: var(--pri-color);
   color: var(--sec-color);
 }
+nav[data-scroll=top] {
+  background: none;
+}
+nav[data-scroll=up] {
+  top: 0;
+  background-color: hsla(0deg, 0%, 100%, 0.5);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+nav[data-scroll=up] .menu {
+  bottom: -75vh;
+  opacity: 1;
+}
+nav[data-scroll=up] a, nav[data-scroll=up] input {
+  color: var(--sec-color);
+}
+nav[data-scroll=up] .menu .links a::after {
+  background-color: var(--sec-color);
+}
+nav[data-scroll=up] .login {
+  border: var(--sec-color) 1px solid;
+}
+nav[data-scroll=up] .login:hover {
+  background-color: var(--sec-color);
+  color: var(--pri-color);
+}
+nav[data-scroll=down] {
+  top: -90px;
+}
+nav[data-scroll=down] .menu {
+  bottom: calc(-75vh - 90px);
+  opacity: 0;
+}
+nav[data-scroll=down] .menu[data-menu=true] {
+  opacity: 1;
+}
 
 @container nav (max-width: 650px) {
   nav .menu {
@@ -139,17 +176,6 @@ nav .login:hover {
     border: var(--sec-color) 2px solid;
     border-radius: 50%;
   }
-  nav .menu[data-nav=true] {
-    width: 200px;
-    height: 300px;
-    border-radius: var(--border-radius);
-  }
-  nav .menu[data-nav=true] .links {
-    opacity: 1;
-  }
-  nav .menu[data-nav=true] .button {
-    rotate: 45deg;
-  }
   nav .menu .links, nav .menu .button {
     display: block;
   }
@@ -161,9 +187,20 @@ nav .login:hover {
   nav .menu .links a {
     color: var(--sec-color);
   }
+  nav .menu[data-menu=true] {
+    width: 200px;
+    height: 300px;
+    border-radius: var(--border-radius);
+  }
+  nav .menu[data-menu=true] .links {
+    opacity: 1;
+  }
+  nav .menu[data-menu=true] .button {
+    rotate: 45deg;
+  }
 }
 @container nav (max-width: 400px) {
-  nav .logo h2 {
+  nav .logo img {
     display: none;
   }
 }
@@ -200,9 +237,4 @@ main #temp {
   min-height: 100vh;
   background-color: var(--pri-color);
   box-shadow: 0px -50px 50px #fff;
-}
-
-footer {
-  background-image: linear-gradient(var(--pri-color), #0152bc);
-  height: 200px;
 }/*# sourceMappingURL=style.css.map */
