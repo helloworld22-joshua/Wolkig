@@ -1,6 +1,5 @@
 :root {
     --pri-color: hsl(0, 0%, 100%);
-    --pri2-color: hsl(0, 0%, 0%);
     --sec-color: hsl(210, 90%, 41%);
     --trd-color: hsl(0, 0%, 5%);
     --transition: .3s ease-in-out;
@@ -51,8 +50,8 @@ nav {
     padding: 0 65px;
     align-items: center;
     z-index: 1;
-    container: nav / inline-size;
     transition: top 1s, background-color 1s;
+    container: nav / inline-size;
 
     a, input {
         color: var(--pri-color);
@@ -228,9 +227,17 @@ nav {
 }
 
 @container nav (max-width: 400px) {     // Temporary
-    nav .logo img {
-        display: none;
+    nav .logo {
+        img {
+            display: none;
+        }
+
+        h2 {
+            margin-right: 48px;
+        }
     }
+    
+    
 }
 
 header {
