@@ -131,26 +131,29 @@ nav[data-scroll=top] {
 }
 nav[data-scroll=up] {
   top: 0;
-  background-color: hsla(0deg, 0%, 100%, 0.5);
+  background-color: hsla(210deg, 90%, 41%, 0.5);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
+  /* a, input {
+      color: var(--sec-color);
+  }
+
+  .menu .links a::after {
+      background-color: var(--sec-color);
+  }
+
+  .login {
+      border: var(--sec-color) 1px solid;
+
+      &:hover {
+          background-color: var(--sec-color);
+          color: var(--pri-color);
+      }
+  } */
 }
 nav[data-scroll=up] .menu {
   bottom: -75vh;
   opacity: 1;
-}
-nav[data-scroll=up] a, nav[data-scroll=up] input {
-  color: var(--sec-color);
-}
-nav[data-scroll=up] .menu .links a::after {
-  background-color: var(--sec-color);
-}
-nav[data-scroll=up] .login {
-  border: var(--sec-color) 1px solid;
-}
-nav[data-scroll=up] .login:hover {
-  background-color: var(--sec-color);
-  color: var(--pri-color);
 }
 nav[data-scroll=down] {
   top: -90px;

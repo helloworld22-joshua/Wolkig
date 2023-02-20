@@ -147,7 +147,7 @@ nav {
     
     &[data-scroll="up"] {
         top: 0;
-        background-color: hsla(0, 0%, 100%, 50%);
+        background-color: hsla(210, 90%, 41%, 50%);
         backdrop-filter: blur(10px);
 
         .menu {
@@ -155,7 +155,7 @@ nav {
             opacity: 1;
         }
 
-        a, input {
+        /* a, input {
             color: var(--sec-color);
         }
 
@@ -170,7 +170,7 @@ nav {
                 background-color: var(--sec-color);
                 color: var(--pri-color);
             }
-        }
+        } */
     }
     
     &[data-scroll="down"] {
