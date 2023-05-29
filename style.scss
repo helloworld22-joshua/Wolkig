@@ -1,6 +1,7 @@
 :root {
     --pri-color: hsl(0, 0%, 100%);
     --sec-color: hsl(210, 90%, 41%);
+    --sec2-color: hsla(210, 90%, 41%, 50%);
     --trd-color: hsl(0, 0%, 5%);
     --transition: .3s ease-in-out;
     --border-radius: 2rem;
@@ -50,6 +51,7 @@ nav {
     padding: 0 65px;
     align-items: center;
     z-index: 1;
+    backdrop-filter: blur(10px);
     transition: top 1s, background-color 1s;
     container: nav / inline-size;
 
@@ -77,6 +79,7 @@ nav {
 
     .menu {
         flex: 4;
+        backdrop-filter: blur(10px);
         transition: opacity 1s, bottom 1s, border-radius 1s, width 1s, height 1s;   // Fix this
 
         .links {
@@ -119,7 +122,7 @@ nav {
             translate: -50%;
             border: none;
             border-radius: 50%;
-            color: var(--sec-color);
+            color: var(--pri-color);
             font-size: 2rem;
             transition: rotate 1s;
             cursor: pointer;
@@ -146,30 +149,12 @@ nav {
     
     &[data-scroll="up"] {
         top: 0;
-        background-color: hsla(210, 90%, 41%, 50%);
-        backdrop-filter: blur(10px);
+        background-color: var(--sec2-color);
 
         .menu {
             bottom: -75vh;
             opacity: 1;
         }
-
-        /* a, input {
-            color: var(--sec-color);
-        }
-
-        .menu .links a::after {
-            background-color: var(--sec-color);
-        }
-
-        .login {
-            border: var(--sec-color) 1px solid;
-
-            &:hover {
-                background-color: var(--sec-color);
-                color: var(--pri-color);
-            }
-        } */
     }
     
     &[data-scroll="down"] {
@@ -188,13 +173,13 @@ nav {
 
 @container nav (max-width: 650px) {
     nav .menu {
-        @include object(60px, 60px, var(--pri-color));
+        @include object(60px, 60px, var(--sec2-color));
         position: fixed;
         bottom: -75vh;
         left: 50%;
         translate: -50%;
         overflow: hidden;
-        border: var(--sec-color) 2px solid;
+        border: var(--pri-color) 1px solid;
         border-radius: 50%;
 
         .links, .button {
@@ -205,10 +190,6 @@ nav {
             opacity: 0;
             text-align: center;
             transition: opacity .5s;
-            
-            a {
-                color: var(--sec-color);
-            }
         }
 
         &[data-menu="true"] {

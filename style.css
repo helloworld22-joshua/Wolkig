@@ -1,6 +1,7 @@
 :root {
   --pri-color: hsl(0, 0%, 100%);
   --sec-color: hsl(210, 90%, 41%);
+  --sec2-color: hsla(210, 90%, 41%, 50%);
   --trd-color: hsl(0, 0%, 5%);
   --transition: .3s ease-in-out;
   --border-radius: 2rem;
@@ -44,6 +45,8 @@ nav {
   padding: 0 65px;
   align-items: center;
   z-index: 1;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
   transition: top 1s, background-color 1s;
   container: nav/inline-size;
 }
@@ -67,6 +70,8 @@ nav .logo h2 {
 }
 nav .menu {
   flex: 4;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
   transition: opacity 1s, bottom 1s, border-radius 1s, width 1s, height 1s;
 }
 nav .menu .links {
@@ -108,7 +113,7 @@ nav .menu .button {
   translate: -50%;
   border: none;
   border-radius: 50%;
-  color: var(--sec-color);
+  color: var(--pri-color);
   font-size: 2rem;
   transition: rotate 1s;
   cursor: pointer;
@@ -130,25 +135,7 @@ nav[data-scroll=top] {
 }
 nav[data-scroll=up] {
   top: 0;
-  background-color: hsla(210deg, 90%, 41%, 0.5);
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
-  /* a, input {
-      color: var(--sec-color);
-  }
-
-  .menu .links a::after {
-      background-color: var(--sec-color);
-  }
-
-  .login {
-      border: var(--sec-color) 1px solid;
-
-      &:hover {
-          background-color: var(--sec-color);
-          color: var(--pri-color);
-      }
-  } */
+  background-color: var(--sec2-color);
 }
 nav[data-scroll=up] .menu {
   bottom: -75vh;
@@ -169,13 +156,13 @@ nav[data-scroll=down] .menu[data-menu=true] {
   nav .menu {
     width: 60px;
     height: 60px;
-    background: var(--pri-color);
+    background: var(--sec2-color);
     position: fixed;
     bottom: -75vh;
     left: 50%;
     translate: -50%;
     overflow: hidden;
-    border: var(--sec-color) 2px solid;
+    border: var(--pri-color) 1px solid;
     border-radius: 50%;
   }
   nav .menu .links, nav .menu .button {
@@ -185,9 +172,6 @@ nav[data-scroll=down] .menu[data-menu=true] {
     opacity: 0;
     text-align: center;
     transition: opacity 0.5s;
-  }
-  nav .menu .links a {
-    color: var(--sec-color);
   }
   nav .menu[data-menu=true] {
     width: 200px;
@@ -228,7 +212,7 @@ header .title {
   position: absolute;
   padding: 65px;
   text-align: center;
-  text-shadow: 2px 2px 2px hsla(0deg, 0%, 0%, 0.25);
+  text-shadow: 2px 2px 2px hsla(0, 0%, 0%, 0.25);
   color: var(--pri-color);
   font-family: Quicksand, sans-serif;
   font-size: 3rem;
