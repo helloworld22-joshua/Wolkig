@@ -12,9 +12,9 @@
     <link rel="stylesheet"href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Kantumruy+Pro">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
-    <!-- <script src="https://kit.fontawesome.com/d0f5ae02d1.js" crossorigin="anonymous"></script> -->
+    <script src="https://kit.fontawesome.com/d0f5ae02d1.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body onload="login.showModal()">
     <nav>
         <a class="logo" href="#">
             <img src="media/logo.png" alt="">
@@ -29,16 +29,33 @@
             </ul>
             <input class="button" type="button" onclick="toggleNav()" value="+">
         </div>
-        <input class="login" type="button" value="Login">
+        <input class="login" type="button" onclick="login.showModal()" value="Login">
     </nav>
     <header>
-        <video class="animated-wallpaper" loop muted playsinline autoplay> <!-- autoplay -->
+        <video class="animated-wallpaper" loop muted playsinline> <!-- autoplay -->
             <source src="media/clouds.webm" type="video/webm">
             <source src="media/clouds.mp4" type="video/mp4">
             Your browser does not support the video.
         </video>
         <h1 class="title">Freedom is limitless above the clouds.</h1>
     </header>
+    <dialog id="login">
+        <form method="dialog">
+            <input class="close-button" type="button" onclick="login.close()" value="×">
+            <h2>Sign in</h2>
+            <p class="continue-text">to continue Wolkig</p>
+            <div class="login-with">
+                <a href="https://www.google.com/" aria-label="Google"><i class="fa-brands fa-google"></i></a>
+                <a href="https://www.facebook.com/" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.apple.com/" aria-label="Apple"><i class="fa-brands fa-apple"></i></a>
+            </div>
+            <hr class="separator">
+            <!-- <label class="login-label" for="e-mail">Email address or username</label> -->
+            <input class="login-input" type="text" name="e-mail" placeholder="Enter Email / Username">
+            <input class="continue-button" type="button" onclick="login.close()" value="Continue">
+            <p class="sign-up">No account? <a href="#">Sign up</a></p>
+        </form>
+    </dialog>
     <main>
         <section id="temp"></section>
     </main>

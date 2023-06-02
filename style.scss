@@ -3,8 +3,14 @@
     --sec-color: hsl(210, 90%, 41%);
     --sec2-color: hsla(210, 90%, 41%, 50%);
     --trd-color: hsl(0, 0%, 5%);
+    --light-gray: hsl(0, 0%, 50%);
+    --dark-gray: hsl(0, 0%, 25%);
     --transition: .3s ease-in-out;
-    --border-radius: 2rem;
+    --border-radius: .5rem;
+    --border-radius-big: 2rem;
+    --box-shadow: inset 0 0 15px hsla(225, 51%, 44%, 0), inset 0 0 20px hsla(0, 0%, 100%, 0), 7px 7px 15px hsla(225, 51%, 44%, 0.15), inset 0px 0px 4px hsla(0, 0%, 100%, 0.2);
+    --box-shadow-button: inset 0 0 15px hsla(225, 51%, 44%, 0), inset 0 0 20px hsla(0, 0%, 100%, 0), 7px 7px 15px rgba(55, 84, 170,.15), -7px -7px 20px hsl(0, 0%, 100%), inset 0px 0px 4px hsla(0, 0%, 100%, 0.2);
+    --box-shadow-button-hover: inset 7px 7px 15px hsla(225, 51%, 44%, 0.15), inset -7px -7px 20px hsl(0, 0%, 100%), 0px 0px 4px hsla(0, 0%, 100%, 0.2);
 }
 
 @mixin object($width, $height, $background) {
@@ -24,9 +30,18 @@
 }
 
 ::selection {
-    color: var(--sec-color);
-    background-color: var(--pri-color);
+    color: var(--pri-color);
+    background-color: var(--sec-color);
 }
+
+/* .button {
+    cursor: pointer;
+    background: none;
+    border: none;
+    border-radius: 0 var(--border-radius);
+    font-size:  1.1rem;
+    padding: 12px;
+} */
 
 *, *::before, *::after {
     box-sizing: border-box;
@@ -41,6 +56,11 @@ body {
     height: 100vh;
     margin: 0;
     overflow-x: hidden;
+
+    font: {
+        family: Kantumruy Pro, sans-serif;
+        size: 1.2rem;
+    }
 }
 
 nav {
@@ -57,10 +77,6 @@ nav {
 
     a, input {
         color: var(--pri-color);
-        font: {
-            family: Kantumruy Pro, sans-serif;
-            size: 1.2rem;
-        }
     }
 
     .logo {
@@ -132,9 +148,10 @@ nav {
     .login {
         flex: 1;
         padding: 12px;
+        font-size:  1.2rem;
         background: none;
         border: var(--pri-color) 1px solid;
-        border-radius: var(--border-radius);
+        border-radius: var(--border-radius-big);
         transition: background-color var(--transition);
 
         &:hover {
@@ -194,7 +211,7 @@ nav {
 
         &[data-menu="true"] {
             @include object(200px, 300px, null);
-            border-radius: var(--border-radius);
+            border-radius: var(--border-radius-big);
             
             .links {
                 opacity: 1;
@@ -242,6 +259,113 @@ header {
             family: Quicksand, sans-serif;
             size: 3rem;
         }
+    }
+}
+
+#login {
+    display: block;
+    width: 25rem;
+    border: none;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    opacity: 0;
+    transition: opacity var(--transition);
+
+    .close-button {
+        @include object(3rem, 3rem, none);
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 1.5rem;
+        border: none;
+        border-radius: 0 var(--border-radius);
+        transition: box-shadow var(--transition);
+        cursor: pointer;
+
+        &:hover {
+            box-shadow: var(--box-shadow-button-hover);
+        }
+    }
+
+    .continue-text {
+        font-size: 1.1rem;
+    }
+
+    .login-with {
+        display: flex;
+        justify-content: space-between;
+        margin: 2rem 0;
+        
+        a {
+            @include center;
+            flex: .3;
+            aspect-ratio: 5 / 3;
+            background-color: var(--pri-color);
+            color: var(--sec-color);
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow-button);
+            transition: box-shadow var(--transition);
+
+            &:hover {
+                box-shadow: var(--box-shadow-button-hover);
+            }
+        }
+    }
+
+    .separator {
+        border: var(--light-gray) 1px dashed;
+
+        &::before {
+            content: "or";
+            position: absolute;
+            left: 50%;
+            translate: -50% -50%;
+            padding: 0 6px;
+            background-color: var(--pri-color);
+        }
+    }
+
+    .login-input {
+        width: 100%;
+        margin: 1rem 0;
+        padding: .5rem;
+        font-size: 1.1rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        border: none;
+        outline: none;
+        font-family: Kantumruy Pro, sans-serif;
+    }
+
+    .continue-button {
+        @include object(100%, null, var(--sec-color));
+        color: var(--pri-color);
+        padding: 12px;
+        font-size:  1.1rem;
+        border: var(--sec-color) 1px solid;
+        border-radius: var(--border-radius-big);
+        transition: background-color var(--transition);
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--pri-color);
+            color: var(--sec-color);
+        }
+    }
+
+    .sign-up {
+        font-size: 1rem;
+        color: var(--dark-gray);
+    }
+
+    &[open] {
+        opacity: 1;
+    }
+
+    &::backdrop {
+        background-color: var(--pri-color);
+        backdrop-filter: blur(10px);
     }
 }
 
