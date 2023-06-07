@@ -37,7 +37,7 @@
 } */
 *, *::before, *::after {
   box-sizing: border-box;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
@@ -301,7 +301,6 @@ header .title {
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   border: none;
-  outline: none;
   font-family: Kantumruy Pro, sans-serif;
 }
 #login .continue-button {
@@ -339,5 +338,5 @@ main #temp {
   position: relative;
   min-height: 100vh;
   background-color: var(--pri-color);
-  box-shadow: 0px -50px 50px #fff;
+  box-shadow: 0px -50px 50px var(--pri-color);
 }/*# sourceMappingURL=style.css.map */
