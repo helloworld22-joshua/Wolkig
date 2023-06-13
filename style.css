@@ -38,6 +38,9 @@
 *, *::before, *::after {
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
+  /* margin: 0;   Implement this eventually
+  padding: 0;
+  font: inherit; */
 }
 
 html {
@@ -77,15 +80,14 @@ nav .logo {
   text-decoration: none;
 }
 nav .logo img {
-  height: 3rem;
+  width: 4rem;
 }
 nav .logo h2 {
-  margin-left: 12px;
+  margin-left: 1rem;
 }
 nav .menu {
   flex: 4;
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
+  /* backdrop-filter: blur(10px); Buggy in Edge - fix! */
   transition: opacity 1s, bottom 1s, border-radius 1s, width 1s, height 1s;
 }
 nav .menu .links {
@@ -105,9 +107,9 @@ nav .menu .links a::after {
   width: 2px;
   height: 2px;
   background: var(--pri-color);
-  content: "";
   position: relative;
   display: block;
+  content: "";
   left: 50%;
   transition: var(--transition);
 }
@@ -119,7 +121,7 @@ nav .menu .button {
   width: 60px;
   height: 60px;
   background: none;
-  position: absolute;
+  position: fixed;
   display: none;
   padding: 0;
   bottom: 0;
@@ -205,7 +207,7 @@ nav[data-scroll=down] .menu[data-menu=true] {
     display: none;
   }
   nav .logo h2 {
-    margin-right: 48px;
+    margin-right: 3rem;
   }
 }
 header {
