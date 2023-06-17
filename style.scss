@@ -185,7 +185,7 @@ nav {
         top: -90px;
 
         .menu {
-            bottom: calc(-75vh - 90px);
+            bottom: -75vh - 90px;
             opacity: 0;
 
             &[data-menu="true"] {
