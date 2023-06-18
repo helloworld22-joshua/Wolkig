@@ -73,17 +73,10 @@ nav a, nav input {
   color: var(--pri-color);
 }
 nav .logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   flex: 1;
-  text-decoration: none;
 }
 nav .logo img {
-  width: 4rem;
-}
-nav .logo h2 {
-  margin-left: 1rem;
+  height: 48px;
 }
 nav .menu {
   flex: 4;
@@ -200,14 +193,6 @@ nav[data-scroll=down] .menu[data-menu=true] {
   }
   nav .menu[data-menu=true] .button {
     rotate: 45deg;
-  }
-}
-@container nav (max-width: 400px) {
-  nav .logo img {
-    display: none;
-  }
-  nav .logo h2 {
-    margin-right: 3rem;
   }
 }
 header {

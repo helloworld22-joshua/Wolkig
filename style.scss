@@ -87,16 +87,10 @@ nav {
     }
 
     .logo {
-        @include center;
         flex: 1;
-        text-decoration: none;
-
+        
         img {
-            width: 4rem;
-        }
-
-        h2 {
-            margin-left: 1rem;
+            height: 48px;
         }
     }
 
@@ -185,7 +179,7 @@ nav {
         top: -90px;
 
         .menu {
-            bottom: -75vh - 90px;
+            bottom: calc(-75vh - 90px);
             opacity: 0;
 
             &[data-menu="true"] {
@@ -227,18 +221,6 @@ nav {
             .button {
                 rotate: 45deg;
             }
-        }
-    }
-}
-
-@container nav (max-width: 400px) {
-    nav .logo {
-        img {
-            display: none;
-        }
-
-        h2 {
-            margin-right: 3rem;
         }
     }
 }
