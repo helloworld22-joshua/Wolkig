@@ -1,4 +1,6 @@
 # Wolkig
 Cloudy/soft website design
 
-Pull request test #1
+Remember:
+https://gravityteam.co/
+https://www.cap-on.de/
