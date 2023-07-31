@@ -87,6 +87,7 @@ nav {
     }
 
     .logo {
+        @include center;
         flex: 1;
         
         img {
@@ -132,7 +133,7 @@ nav {
 
         .button {
             @include object(60px, 60px, none);
-            @include default(fixed, none);
+            @include default(absolute, none);
             padding: 0;
             bottom: 0;
             left: 50%;
@@ -173,6 +174,10 @@ nav {
             bottom: -75vh;
             opacity: 1;
         }
+
+        /* .menu {
+            display: block;
+        } */
     }
     
     &[data-scroll="down"] {
@@ -186,9 +191,22 @@ nav {
                 opacity: 1;
             }
         }
+
+        /* .menu {
+            display: none;
+
+            &[data-menu="true"] {
+                display: block;
+            }
+        } */
     }
 }
 
+/* @media (max-width: 650px) {
+    nav {
+        top: auto;
+        bottom: 0;
+    } */
 @container nav (max-width: 650px) {
     nav .menu {
         @include object(60px, 60px, var(--sec2-color));
@@ -233,18 +251,18 @@ header {
     .animated-wallpaper {
         @include object(100%, 100%, null);
         object-fit: cover;
-        clip-path: inset(0 0 1px 0);   // Black line appearing below <video> bug
+        clip-path: inset(0 0 1px 0);   // Black line appearing below <video> bug: Check again later!!
     }
 
     .title {
         position: absolute;
         padding: 65px;
         text-align: center;
-        text-shadow: 2px 2px 2px hsla(0, 0%, 0%, 0.25);
+        text-shadow: 0px 9px 10px rgba(56, 56, 56, 0.655);
         color: var(--pri-color);
         font: {
             family: Quicksand, sans-serif;
-            size: 3rem;
+            size: 4rem;
         }
     }
 }
