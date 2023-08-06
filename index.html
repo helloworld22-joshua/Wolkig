@@ -24,18 +24,10 @@
                 <li><a href="#">Donate</a></li>
                 <li><a href="#">Help</a></li>
             </ul>
-            <input class="button" type="button" onclick="toggleNav()" value="+">
+            <input class="button" type="button" onclick="toggleNav()" value="…">
         </div>
         <input class="login" type="button" onclick="login.showModal()" value="Login">
     </nav>
-    <header>
-        <video class="animated-wallpaper" loop muted playsinline> <!-- autoplay -->
-            <source src="media/clouds.webm" type="video/webm">
-            <source src="media/clouds.mp4" type="video/mp4">
-            Your browser does not support the video.
-        </video>
-        <h1 class="title">Freedom is limitless above the clouds.</h1>
-    </header>
     <dialog id="login">
         <form method="dialog">
             <input class="close-button" type="button" onclick="login.close()" value="×">
@@ -52,9 +44,25 @@
             <p class="sign-up">No account? <a href="#">Sign up</a></p>
         </form>
     </dialog>
+    <header>
+        <video class="animated-wallpaper" loop muted playsinline> <!-- autoplay -->
+            <source src="media/clouds.webm" type="video/webm">
+            <source src="media/clouds.mp4" type="video/mp4">
+            Your browser does not support the video.
+        </video>
+        <h1 class="title">Freedom is limitless above the clouds.</h1>
+    </header>
     <main>
-        <section id="temp"></section>
+        <section id="carousel">
+            <h2>About us</h2>
+            <ul class="carousel-list">
+                <li class="carousel-item" data-pos="-2">1</li>
+                <li class="carousel-item" data-pos="-1">2</li>
+                <li class="carousel-item" data-pos="0">3</li>
+                <li class="carousel-item" data-pos="1">4</li>
+                <li class="carousel-item" data-pos="2">5</li>
+            </ul>
+        </section>
     </main>
-    <footer></footer>
 </body>
 </html>

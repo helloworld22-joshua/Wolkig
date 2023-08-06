@@ -2,7 +2,7 @@
     --pri-color: hsl(0, 0%, 100%);
     --sec-color: hsl(210, 90%, 41%);
     --sec2-color: hsla(210, 90%, 41%, 50%);
-    --trd-color: hsl(0, 0%, 5%);
+    --trd-color: hsl(0, 0%, 15%);
     --light-gray: hsl(0, 0%, 50%);
     --dark-gray: hsl(0, 0%, 25%);
     --transition: .3s ease-in-out;
@@ -51,9 +51,9 @@
 *, *::before, *::after {
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
-    /* margin: 0;   Implement this eventually
+    margin: 0;
     padding: 0;
-    font: inherit; */
+    /* font: inherit; */
 }
 
 html {
@@ -97,8 +97,6 @@ nav {
 
     .menu {
         flex: 4;
-        /* backdrop-filter: blur(10px); Buggy in Edge - fix! */
-        transition: opacity 1s, bottom 1s, border-radius 1s, width 1s, height 1s;   // Fix this
 
         .links {
             display: flex;
@@ -132,18 +130,19 @@ nav {
         }
 
         .button {
-            @include object(60px, 60px, none);
-            @include default(absolute, none);
-            padding: 0;
-            bottom: 0;
-            left: 50%;
-            translate: -50%;
+            @include default(relative, none);
+            width: 96px;
+            padding: 12px;
+            top: -17px;
+            color: var(--sec-color);
+            background-color: var(--pri-color);
             border: none;
-            border-radius: 50%;
-            color: var(--pri-color);
-            font-size: 2rem;
-            transition: rotate 1s;
-            cursor: pointer;
+            border-radius: 0 0 var(--border-radius-big) var(--border-radius-big);
+            margin: auto;
+            font: {
+                family: Quicksand, sans-serif;
+                size: 1.8rem;
+            }
         }
     }
 
@@ -169,77 +168,52 @@ nav {
     &[data-scroll="up"] {
         top: 0;
         background-color: var(--sec2-color);
-
-        .menu {
-            bottom: -75vh;
-            opacity: 1;
-        }
-
-        /* .menu {
-            display: block;
-        } */
     }
     
     &[data-scroll="down"] {
         top: -90px;
-
-        .menu {
-            bottom: calc(-75vh - 90px);
-            opacity: 0;
-
-            &[data-menu="true"] {
-                opacity: 1;
-            }
-        }
-
-        /* .menu {
-            display: none;
-
-            &[data-menu="true"] {
-                display: block;
-            }
-        } */
     }
 }
 
-/* @media (max-width: 650px) {
-    nav {
-        top: auto;
-        bottom: 0;
-    } */
 @container nav (max-width: 650px) {
     nav .menu {
-        @include object(60px, 60px, var(--sec2-color));
-        position: fixed;
-        bottom: -75vh;
-        left: 50%;
-        translate: -50%;
-        overflow: hidden;
-        border: var(--pri-color) 1px solid;
-        border-radius: 50%;
+        flex: 1;
 
-        .links, .button {
+        .links {
+            display: none;
+        }
+
+        .button {
             display: block;
         }
 
-        .links {
-            opacity: 0;
-            text-align: center;
-            transition: opacity .5s;
+        &[data-menu="true"] {
+            .links {
+                display: block;
+                text-align: center;
+                background-color: var(--pri-color);
+                position: absolute;
+                top: 100px;
+
+                a {
+                    color: var(--sec-color);
+                }
+            }
+
+            .button {
+                background-color: red;
+            }
         }
+        /* @include object(60px, 60px, var(--sec2-color));
 
         &[data-menu="true"] {
             @include object(200px, 300px, null);
             border-radius: var(--border-radius-big);
             
-            .links {
-                opacity: 1;
-            }
-            
             .button {
                 rotate: 45deg;
             }
-        }
+        } */
     }
 }
 
@@ -268,8 +242,14 @@ header {
 }
 
 #login {
+    position: fixed;
     display: block;
     width: 25rem;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    padding: 3rem 1rem;
+    z-index: -1;
     border: none;
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
@@ -333,13 +313,19 @@ header {
 
     .login-input {
         width: 100%;
-        margin: 1rem 0;
+        margin: 2rem 0;
         padding: .5rem;
         font-size: 1.1rem;
         border-radius: var(--border-radius);
         box-shadow: var(--box-shadow);
         border: none;
+        outline: none;
         font-family: Kantumruy Pro, sans-serif;
+        transition: box-shadow var(--transition);
+
+        &:focus {
+            box-shadow: var(--box-shadow-button-hover);
+        }
     }
 
     .continue-button {
@@ -361,6 +347,7 @@ header {
     .sign-up {
         font-size: 1rem;
         color: var(--dark-gray);
+        margin: .5rem 0;
     }
 
     &[open] {
@@ -373,14 +360,89 @@ header {
     }
 }
 
-// Placeholder
 main {
-    height: inherit;
+    /* section * {
+        translate: 150px;
+        opacity: 0;
+        transition: translate 1s;
 
-    #temp {
-        position: relative;
-        min-height: 100vh;
-        background-color: var(--pri-color);
+        &.active {
+            translate: inherit;
+            opacity: 1;
+        }
+    } */
+
+    #carousel {
+        display: flex;
+        height: 100vh;
+        align-items: center;
         box-shadow: 0px -50px 50px var(--pri-color);
+        container: carousel / inline-size;
+
+        h2 {
+            position: absolute;
+            top: 15%;
+            left: 3rem;
+
+            font: {
+                family: Quicksand, sans-serif;
+                size: 3rem;
+            }
+        }
+        
+        .carousel-list {
+            display: flex;
+            position: relative;
+            width: 100%;
+            height: 28rem;
+            justify-content: center;
+            perspective: 300px;
+        }
+        
+        .carousel-item {
+            position: absolute;
+            display: flex;
+            width: min(28rem, 50%);
+            height: inherit;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(110deg, #2495de 0%, #5db4ea 20%, #f2f8fc 100%);
+            color: #fff;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: all .3s ease-in;
+            
+            &[data-pos="0"] {
+                z-index: 5;
+            }
+            
+            &[data-pos="-1"], &[data-pos="1"] {
+                z-index: 4;
+                scale: .9;
+                opacity: .7;
+                filter: blur(1px) grayscale(10%);
+            }
+
+            &[data-pos="-2"], &[data-pos="2"] {
+                z-index: 3;
+                scale: .8;
+                opacity: .4;
+                filter: blur(3px) grayscale(20%);
+            }
+            
+            &[data-pos="-1"] {translate: -50%}
+            &[data-pos="1"] {translate: 50%}
+            &[data-pos="-2"] {translate: -75%}
+            &[data-pos="2"] {translate: 75%}
+        }
+    }
+}
+
+@container carousel (max-width: 1000px) {
+    main #carousel .carousel-item {
+        &[data-pos="-1"] {translate: -30%}
+        &[data-pos="1"] {translate: 30%}
+        &[data-pos="-2"] {translate: -50%}
+        &[data-pos="2"] {translate: 50%}
     }
 }
