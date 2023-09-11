@@ -391,26 +391,30 @@ main {
         }
         
         .carousel-list {
-            display: flex;
-            position: relative;
-            width: 100%;
-            height: 28rem;
+            @include object(100%, 28rem, null);
+            @include default(relative, flex);
             justify-content: center;
             perspective: 300px;
         }
         
         .carousel-item {
-            position: absolute;
-            display: flex;
-            width: min(28rem, 50%);
-            height: inherit;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(110deg, #2495de 0%, #5db4ea 20%, #f2f8fc 100%);
+            @include object(min(28rem, 50%), inherit, linear-gradient(110deg, #2495de 0%, #5db4ea 20%, #f2f8fc 100%));
+            @include default(absolute, flex);
+            @include center;
+            flex-direction: column;
             color: #fff;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
-            transition: all .3s ease-in;
+            transition: all .3s ease-in-out;
+
+            & > * {
+                width: 60%;
+                pointer-events: none;
+                text-align: center;
+                margin: 1rem;
+                font-size: 2rem;
+                text-shadow: 0px 9px 10px rgba(56, 56, 56, 0.655);
+            }
             
             &[data-pos="0"] {
                 z-index: 5;
@@ -426,7 +430,7 @@ main {
             &[data-pos="-2"], &[data-pos="2"] {
                 z-index: 3;
                 scale: .8;
-                opacity: .4;
+                opacity: .5;
                 filter: blur(3px) grayscale(20%);
             }
             

@@ -345,25 +345,35 @@ main #carousel h2 {
   font-size: 3rem;
 }
 main #carousel .carousel-list {
-  display: flex;
-  position: relative;
   width: 100%;
   height: 28rem;
+  position: relative;
+  display: flex;
   justify-content: center;
   perspective: 300px;
 }
 main #carousel .carousel-item {
-  position: absolute;
-  display: flex;
   width: min(28rem, 50%);
   height: inherit;
+  background: linear-gradient(110deg, #2495de 0%, #5db4ea 20%, #f2f8fc 100%);
+  position: absolute;
+  display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(110deg, #2495de 0%, #5db4ea 20%, #f2f8fc 100%);
+  flex-direction: column;
   color: #fff;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
-  transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in-out;
+}
+main #carousel .carousel-item > * {
+  width: 60%;
+  pointer-events: none;
+  text-align: center;
+  margin: 1rem;
+  font-size: 2rem;
+  text-shadow: 0px 9px 10px rgba(56, 56, 56, 0.655);
 }
 main #carousel .carousel-item[data-pos="0"] {
   z-index: 5;
@@ -377,7 +387,7 @@ main #carousel .carousel-item[data-pos="-1"], main #carousel .carousel-item[data
 main #carousel .carousel-item[data-pos="-2"], main #carousel .carousel-item[data-pos="2"] {
   z-index: 3;
   scale: 0.8;
-  opacity: 0.4;
+  opacity: 0.5;
   filter: blur(3px) grayscale(20%);
 }
 main #carousel .carousel-item[data-pos="-1"] {
