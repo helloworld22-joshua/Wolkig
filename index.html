@@ -24,18 +24,10 @@
                 <li><a href="#">Donate</a></li>
                 <li><a href="#">Help</a></li>
             </ul>
-            <input class="button" type="button" onclick="toggleNav()" value="+">
+            <input class="button" type="button" onclick="toggleNav()" value="…">
         </div>
         <input class="login" type="button" onclick="login.showModal()" value="Login">
     </nav>
-    <header>
-        <video class="animated-wallpaper" loop muted playsinline> <!-- autoplay -->
-            <source src="media/clouds.webm" type="video/webm">
-            <source src="media/clouds.mp4" type="video/mp4">
-            Your browser does not support the video.
-        </video>
-        <h1 class="title">Freedom is limitless above the clouds.</h1>
-    </header>
     <dialog id="login">
         <form method="dialog">
             <input class="close-button" type="button" onclick="login.close()" value="×">
@@ -52,9 +44,40 @@
             <p class="sign-up">No account? <a href="#">Sign up</a></p>
         </form>
     </dialog>
+    <header>
+        <video class="animated-wallpaper" loop muted playsinline> <!-- autoplay -->
+            <source src="media/clouds.webm" type="video/webm">
+            <source src="media/clouds.mp4" type="video/mp4">
+            Your browser does not support the video.
+        </video>
+        <h1 class="title">Freedom is limitless above the clouds.</h1>
+    </header>
     <main>
-        <section id="temp"></section>
+        <section id="carousel">
+            <h2>About us</h2>
+            <ul class="carousel-list">
+                <li class="carousel-item" data-pos="-2">
+                    <h3>Give us your money!</h3>
+                    <img class="graphic" src="media/coin-chart.svg" alt="SVG not supported">
+                </li>
+                <li class="carousel-item" data-pos="-1">
+                    <h3>Yum, pie.</h3>
+                    <img class="graphic" src="media/pie-chart.svg" alt="SVG not supported">
+                </li>
+                <li class="carousel-item" data-pos="0">
+                    <h3>Works 20% faster</h3>
+                    <img class="graphic" src="media/mac.svg" alt="SVG not supported">
+                </li>
+                <li class="carousel-item" data-pos="1">
+                    <h3>1 byte of FREE storage</h3>
+                    <img class="graphic" src="media/upload.svg" alt="SVG not supported">
+                </li>
+                <li class="carousel-item" data-pos="2">
+                    <h3>We are the best</h3>
+                    <img class="graphic" src="media/bar-chart.svg" alt="SVG not supported">
+                </li>
+            </ul>
+        </section>
     </main>
-    <footer></footer>
 </body>
 </html>
